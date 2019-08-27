@@ -14,7 +14,7 @@ echo "disable docker-ce-nightly"
 yum-config-manager --disable docker-ce-nightly
 
 echo "install docker "
-yum install docker-ce docker-ce-cli containerd.io
+yum install -y  docker-ce-18.09.8-3.el7 docker-ce-cli-18.09.8-3.el7  containerd.io
 
 systemctl start docker
 systemctl stop docker
@@ -25,9 +25,10 @@ echo "-- change cgroupdriver type"
 
 touch /etc/docker/daemon.json
 
+rm -rf /home/bruceding/data/docker/*
 cat <<EOF > /etc/docker/daemon.json
 {
-  "data-root": "/mnt/docker_worker01",
+  "data-root": "/home/bruceding/data/docker",
   "exec-opts": ["native.cgroupdriver=systemd"]
 }
 EOF
