@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: $(mysqlPvcName)
+spec:
+  storageClassName: ""
+  volumeName: $(mysqlPvName)
+  selector:
+    matchLabels:
+      app: mysql
