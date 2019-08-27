@@ -71,6 +71,7 @@ docker tag mirrorgooglecontainers/pause:3.1 k8s.gcr.io/pause:3.1
 docker pull mirrorgooglecontainers/etcd:3.3.10
 docker tag mirrorgooglecontainers/etcd:3.3.10 k8s.gcr.io/etcd:3.3.10
 
+swapoff -a
 echo "kubeadm init"
 kubeadm init --config kubeadm.yaml
 

@@ -16,6 +16,7 @@ yum-config-manager --disable docker-ce-nightly
 echo "install docker "
 yum install -y  docker-ce-18.09.8-3.el7 docker-ce-cli-18.09.8-3.el7  containerd.io
 
+systemctl enable docker.service
 systemctl start docker
 systemctl stop docker
 
