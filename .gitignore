@@ -1,0 +1,6 @@
+*.swp
+*.swo
+kfctl
+kubeadm.yaml
+kubeflow/.cache/
+kubeflow/kustomize/
