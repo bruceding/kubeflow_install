@@ -52,7 +52,7 @@ sh kubernetes_dashbord_install.sh
 ```
 sh kubeflow_install.sh
 ```
-In sigle master, you should create local storage
+If you create local storage
 Change kubeflow/\*pv.yaml as your local environment 
 ```
 nodeAffinity:
@@ -71,4 +71,8 @@ kubectl apply -f katib-pv.yaml
 kubectl apply -f metadata-mysql-pv.yaml  
 kubectl apply -f minio-pv.yaml   
 kubectl apply -f mysql-pv.yaml    
+```
+Check `kubectl get pods -n kubeflow`, if you can not pull the docker image, you can run
+```
+sh kubeflow_docker_image.sh
 ```
