@@ -4,3 +4,4 @@ kfctl
 kubeadm.yaml
 kubeflow/.cache/
 kubeflow/kustomize/
+kubeflow/tmp*

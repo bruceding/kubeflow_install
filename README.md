@@ -42,3 +42,33 @@ kubeadm join 172.17.35.1:6443 --token o4y74e.s2agv2jo7flp9bfy \
 ```
 sh kubeadm_install_worker.sh
 ```
+
+### install k8s dashborad
+```
+sh kubernetes_dashbord_install.sh 
+```
+
+### install kubeflow
+```
+sh kubeflow_install.sh
+```
+In sigle master, you should create local storage
+Change kubeflow/\*pv.yaml as your local environment 
+```
+nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - k8smaster # change this
+```
+install like this
+```
+cd kubeflow
+kubectl apply -f katib-pv.yaml 
+kubectl apply -f metadata-mysql-pv.yaml  
+kubectl apply -f minio-pv.yaml   
+kubectl apply -f mysql-pv.yaml    
+```

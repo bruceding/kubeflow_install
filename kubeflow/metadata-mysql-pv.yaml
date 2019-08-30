@@ -21,4 +21,4 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-          - iz2ze387vc0s9yf0f5sf0mz 
+          - k8smaster 
