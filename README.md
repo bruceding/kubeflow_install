@@ -38,10 +38,16 @@ kubeadm join 172.17.35.1:6443 --token o4y74e.s2agv2jo7flp9bfy \
     --discovery-token-ca-cert-hash sha256:cb8fef596369604ca08634df74836fd1d51f79faadb58896b1efc6d02f6aeb08
 
 ```
-### install k8s work use kubeadm
+### install k8s worker node use kubeadm
 ```
 sh kubeadm_install_worker.sh
 ```
+After install, use this join the master 
+```
+kubeadm join 172.17.35.1:6443 --token o4y74e.s2agv2jo7flp9bfy \
+    --discovery-token-ca-cert-hash sha256:cb8fef596369604ca08634df74836fd1d51f79faadb58896b1efc6d02f6aeb08
+```
+Check token from `kubeadm token list`, if the token is invalid, you can use  `kubeadm token create`. 
 
 ### install k8s dashborad
 ```
@@ -76,3 +82,4 @@ Check `kubectl get pods -n kubeflow`, if you can not pull the docker image, you 
 ```
 sh kubeflow_docker_image.sh
 ```
+You can use `istio-ingressgateway` NodePort like `80:31380/TCP`, use http://${master_ip}:31380 login kubeflow dashborad.
