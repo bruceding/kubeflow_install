@@ -7,18 +7,6 @@ toolkits for kubeflow install, use centos7.6 system
 sh docker_install.sh
 ```
 
-If you change the docker image location set the data-root
-
-```
-rm -rf /home/bruceding/data/docker/*
-cat <<EOF > /etc/docker/daemon.json
-{
-  "data-root": "/home/bruceding/data/docker",
-  "exec-opts": ["native.cgroupdriver=systemd"]
-}
-EOF
-```
-
 ### install k8s master use kubeadm, use root to run
 ```
 sh kubeadm_install.sh 
