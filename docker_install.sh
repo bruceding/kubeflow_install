@@ -8,7 +8,7 @@ yum install -y yum-utils \
 echo "add repo"
 yum-config-manager \
     --add-repo \
-    https://download.docker.com/linux/centos/docker-ce.repo
+    http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 
 echo "disable docker-ce-nightly"
 yum-config-manager --disable docker-ce-nightly
@@ -26,10 +26,14 @@ echo "-- change cgroupdriver type"
 
 touch /etc/docker/daemon.json
 
-rm -rf /home/bruceding/data/docker/*
+if [ ! -d "/opt/docker" ]; then
+    mkdir -p /opt/docker
+    chmod 777 /opt/docker
+fi
+
 cat <<EOF > /etc/docker/daemon.json
 {
-  "data-root": "/home/bruceding/data/docker",
+  "data-root": "/opt/docker",
   "exec-opts": ["native.cgroupdriver=systemd"]
 }
 EOF
